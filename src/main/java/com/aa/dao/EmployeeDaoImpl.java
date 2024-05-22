@@ -40,8 +40,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public Employee getEmployeeById(int id) {
 
 		 Session session = sessionFactory.getCurrentSession();      
-	        Employee employee = (Employee) session.get(Employee.class, new Integer(id));
-	        return employee;
+	       // Employee employee = (Employee) session.get(Employee.class, new Integer(id));
+		  Employee employee = (Employee) session.get(Employee.class,Integer.valueOf(id));
+		 
+		 return employee;
 
 	}
 
@@ -49,8 +51,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public void removeEmployee(int id) {
 
 		Session session = sessionFactory.getCurrentSession();
-        Employee employee = (Employee) session.get(Employee.class, new Integer(id));
-        if(null != employee){
+        //Employee employee = (Employee) session.get(Employee.class, new Integer(id));
+		  Employee employee = (Employee) session.get(Employee.class, Integer.valueOf(id));
+		if(null != employee){
             session.delete(employee);
         }
 	}
